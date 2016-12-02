@@ -1,5 +1,6 @@
 require './single_digit'
 require './teen_digit'
+require './double_digit'
 
 class NumberBuilder
   attr_reader :number, :digit_count, :number_string
