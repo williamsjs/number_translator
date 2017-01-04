@@ -8,10 +8,24 @@ class NumberBuilder
 
   #TODO handle negative numbers here
   def initialize(number)
-    @number_string = number.strip.size > 3 ? split_number(number.to_i) : create_number_string(number.to_i)
+    parsed_number = clean_number_of_negative(number)
+    number = parsed_number["num"]
+    is_negative = parsed_number["negative"]
+    @number_string = is_negative ? "Negative " + determine_number_of_digits(number) : determine_number_of_digits(number)
   end
 
   private
+
+    def determine_number_of_digits(number)
+      number.strip.size > 3 ? split_number(number.to_i) : create_number_string(number.to_i)
+    end
+
+    def clean_number_of_negative(number)
+      parsed_number = {}
+      parsed_number["negative"] = number.strip[0] == '-'
+      parsed_number["num"] = parsed_number["negative"] == false ? number : number.split("")[1..-1].join # remove - from string
+      parsed_number
+    end
 
     def split_number(num)
       numbers = num.to_s.split("")
