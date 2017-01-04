@@ -12,13 +12,12 @@ class NumberBuilder
   end
 
   private
+
     def split_number(num)
       number_string = ""
       numbers = num.to_s.split("")
       hundred_digits = numbers.pop(3)
-      number_string += create_number_string(numbers.join.to_i) + " Thousand"
-      number_string += " " + create_number_string(hundred_digits.join.to_i) if hundred_digits.join.to_i != 0 
-      number_string
+      create_thousand_string(numbers, hundred_digits)
     end
 
     def create_number_string(num)
@@ -30,6 +29,12 @@ class NumberBuilder
       when 3
         return TripleDigit.new(num).num
       end
+    end
+
+    def create_thousand_string(numbers, hundred_digits)
+      number_string = create_number_string(numbers.join.to_i) + " Thousand"
+      number_string += " " + create_number_string(hundred_digits.join.to_i) if hundred_digits.join.to_i != 0 # check if last three digits are zero
+      number_string
     end
 
 end
