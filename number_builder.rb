@@ -14,7 +14,6 @@ class NumberBuilder
   private
 
     def split_number(num)
-      number_string = ""
       numbers = num.to_s.split("")
       hundred_digits = numbers.pop(3)
       create_thousand_string(numbers, hundred_digits)
