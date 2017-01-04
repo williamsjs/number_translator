@@ -19,7 +19,7 @@ class TripleDigit
     end
 
     def parse_zeroes(last_digits)
-      if last_digits > 20
+      if last_digits >= 20
         return DoubleDigit.new(last_digits).num
       elsif last_digits > 9
         return TeenDigit.new(last_digits).num

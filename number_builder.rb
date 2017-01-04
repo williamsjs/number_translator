@@ -16,8 +16,9 @@ class NumberBuilder
       number_string = ""
       numbers = num.to_s.split("")
       hundred_digits = numbers.pop(3)
-      number_string += create_number_string(numbers.join.to_i) + " Thousand "
-      number_string += create_number_string(hundred_digits.join.to_i)
+      number_string += create_number_string(numbers.join.to_i) + " Thousand"
+      number_string += " " + create_number_string(hundred_digits.join.to_i) if hundred_digits.join.to_i != 0 
+      number_string
     end
 
     def create_number_string(num)
