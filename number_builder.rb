@@ -6,7 +6,6 @@ require './triple_digit'
 class NumberBuilder
   attr_reader :number_string
 
-  #TODO handle negative numbers here
   def initialize(number)
     parsed_number = clean_number_of_negative(number)
     number = parsed_number["num"]
